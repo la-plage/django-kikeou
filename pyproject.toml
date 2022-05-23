@@ -1,5 +1,6 @@
 [build-system]
 requires = [
+    "django>=3.2",
     "setuptools>=42",
     "wheel"
 ]
