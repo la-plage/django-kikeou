@@ -1,3 +1,5 @@
-from setuptools import setup
+#!/usr/bin/env python
 
-setup()
+if __name__ == "__main__":
+    from setuptools import setup
+    setup()
