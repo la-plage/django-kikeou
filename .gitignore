@@ -2,5 +2,6 @@ db.sqlite3
 *.pyc
 venv/
 
+build/
 dist/
 *.egg-info/
