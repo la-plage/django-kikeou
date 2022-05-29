@@ -2,6 +2,9 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 
+__all__ = ["Cycle"]
+
+
 class Cycle(models.Model):
     """
     A cycle can be a festival edition, club season, ...
