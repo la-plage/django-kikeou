@@ -7,7 +7,8 @@ from tests.factories import CycleFactory, SuperUserFactory
 
 
 class CycleTestCase(TestCase):
-    def test_save_cycle(self):
+    @staticmethod
+    def test_save_cycle():
         cycle = CycleFactory()
         cycle.save()
 
