@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.test import TestCase
+
 from kikeou.models.cycle import Cycle
 
 

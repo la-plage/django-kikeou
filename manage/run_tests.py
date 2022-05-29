@@ -2,8 +2,8 @@
 
 import sys
 from unittest import TestSuite
-from _boot_django import boot_django
 
+from _boot_django import boot_django
 
 boot_django()
 default_labels = [
