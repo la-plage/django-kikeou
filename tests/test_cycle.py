@@ -22,10 +22,16 @@ class CycleTestCase(TestCase):
     def test_cycle_model_permissions(self):
         self.client.force_login(SuperUserFactory())
         self.assertEqual(
+            self.client.get(reverse("admin:kikeou_cycle_changelist")).status_code, 200
+        )
+        self.assertEqual(
             self.client.get(reverse("admin:kikeou_cycle_add")).status_code, 200
         )
         self.assertEqual(
-            self.client.get(reverse("admin:kikeou_cycle_changelist")).status_code, 200
+            self.client.get(
+                reverse("admin:kikeou_cycle_delete", args=[CycleFactory().id])
+            ).status_code,
+            200,
         )
         self.assertEqual(
             self.client.get(
