@@ -11,7 +11,7 @@ default_labels = [
 ]
 
 
-def get_suite(lables):
+def get_suite(labels):
     from django.test.runner import DiscoverRunner
 
     runner = DiscoverRunner(verbosity=1)
@@ -27,4 +27,4 @@ if __name__ == "__main__":
     labels = default_labels
     if len(sys.argv[1:]) > 0:
         labels = sys.argv[1:]
-    get_suite("tests")
+    get_suite(labels)
