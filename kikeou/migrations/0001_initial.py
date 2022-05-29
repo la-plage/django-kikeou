@@ -7,21 +7,28 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Cycle',
+            name="Cycle",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='name')),
-                ('start_date', models.DateField(verbose_name='start date')),
-                ('end_date', models.DateField(verbose_name='end date')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, verbose_name="name")),
+                ("start_date", models.DateField(verbose_name="start date")),
+                ("end_date", models.DateField(verbose_name="end date")),
             ],
             options={
-                'verbose_name': 'cycle',
-                'verbose_name_plural': 'cycles',
+                "verbose_name": "cycle",
+                "verbose_name_plural": "cycles",
             },
         ),
     ]

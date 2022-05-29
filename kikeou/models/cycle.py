@@ -6,6 +6,7 @@ class Cycle(models.Model):
     """
     A cycle can be a festival edition, club season, ...
     """
+
     class Meta:
         verbose_name = _("cycle")
         verbose_name_plural = _("cycles")

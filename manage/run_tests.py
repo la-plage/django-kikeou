@@ -6,11 +6,14 @@ from _boot_django import boot_django
 
 
 boot_django()
-default_labels = ["tests", ]
+default_labels = [
+    "tests",
+]
 
 
 def get_suite(lables):
     from django.test.runner import DiscoverRunner
+
     runner = DiscoverRunner(verbosity=1)
     failures = runner.run_tests(labels)
     if failures:
