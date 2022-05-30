@@ -28,6 +28,9 @@ class Cycle(models.Model):
     start_date = models.DateField(verbose_name=_("start date"))
     end_date = models.DateField(verbose_name=_("end date"))
 
+    def __str__(self):
+        return f"{self.name} {self.start_date}-{self.end_date}"
+
     def save(self, *args, **kwargs):
         if self.end_date < self.start_date:
             raise ValueError(_("End date can't be before start date"))
