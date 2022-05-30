@@ -1,9 +1,9 @@
 from datetime import date
 
+from factory import Sequence
 from factory.django import DjangoModelFactory
 
 from kikeou.models import Cycle
-
 
 __all__ = ["CycleFactory"]
 

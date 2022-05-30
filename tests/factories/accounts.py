@@ -1,8 +1,6 @@
+from django.contrib.auth import get_user_model
 from factory import PostGenerationMethodCall, Sequence
 from factory.django import DjangoModelFactory
-
-from django.contrib.auth import get_user_model
-
 
 __all__ = ["StaffUserFactory", "SuperUserFactory", "UserFactory"]
 

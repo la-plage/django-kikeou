@@ -39,3 +39,21 @@ class CycleTestCase(TestCase):
             ).status_code,
             200,
         )
+
+    def test_active_cycle_is_set_automatically(self):
+        # First cycle instance has is_the_active_one=True forced automatically
+        self.assertTrue(CycleFactory(is_the_active_one=False).is_the_active_one)
+
+        # Other cycle instances have is_the_active_one=False as default
+        self.assertFalse(CycleFactory().is_the_active_one)
+
+    def test_cant_have_more_than_one_active_cycle(self):
+        first_cycle = CycleFactory(is_the_active_one=True)
+        self.assertTrue(first_cycle.is_the_active_one)
+
+        # Create a second cycle with is_the_active_one=True
+        self.assertTrue(CycleFactory(is_the_active_one=True).is_the_active_one)
+
+        # Check that first cycle has been automatically set to false
+        first_cycle.refresh_from_db()
+        self.assertFalse(first_cycle.is_the_active_one)
