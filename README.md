@@ -2,6 +2,8 @@
 
 A Django app to handle your festival.
 
+WARNING: status of the project is currently not stable => contact us if you want to have a try
+
 ## Developers - Help us to hack django-kikeou
 
 ### Tests
