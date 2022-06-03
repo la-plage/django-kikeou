@@ -7,10 +7,22 @@ from kikeou.models import Cycle
 __all__ = ["Person"]
 
 
+class PersonManager(models.Manager):
+    def create(self, **kwargs):
+        kwargs.update(
+            {
+                "cycle": Cycle.objects.get_active(),
+            }
+        )
+        return super().create(**kwargs)
+
+
 class Person(models.Model):
     class Meta:
         verbose_name = _("person")
         verbose_name_plural = _("persons")
+
+    objects = PersonManager()
 
     ADULT = "adult"
     CHILD = "child"
@@ -68,3 +80,10 @@ class Person(models.Model):
     @property
     def full_name(self):
         return f"{self.first_name.strip()} {self.last_name.strip()}".strip()
+
+    def save(self, *args, **kwargs):
+        try:
+            _ = self.cycle
+        except Cycle.DoesNotExist:
+            self.cycle = Cycle.objects.get_active()
+        super().save(*args, **kwargs)

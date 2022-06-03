@@ -5,6 +5,11 @@ from django.utils.translation import ugettext_lazy as _
 __all__ = ["Cycle"]
 
 
+class CycleManager(models.Manager):
+    def get_active(self):
+        return self.get_queryset().get(is_the_active_one=True)
+
+
 class Cycle(models.Model):
     """
     A cycle can be a festival edition, club season, ...
@@ -20,6 +25,8 @@ class Cycle(models.Model):
         ]
         verbose_name = _("cycle")
         verbose_name_plural = _("cycles")
+
+    objects = CycleManager()
 
     is_the_active_one = models.BooleanField(
         default=False, verbose_name=_("is the active one")
