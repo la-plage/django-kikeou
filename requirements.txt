@@ -1,1 +1,1 @@
-./requirements/base.txt
+django>=3.2
