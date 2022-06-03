@@ -2,7 +2,7 @@ from datetime import date
 
 from factory.django import DjangoModelFactory
 
-from kikeou.models import Cycle
+from kikeou.models.cycle import Cycle
 
 __all__ = ["CycleFactory"]
 

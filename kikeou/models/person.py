@@ -2,27 +2,15 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from kikeou.models import Cycle
+from kikeou.models.utils.abstracts import CycleDependentAbstract
 
 __all__ = ["Person"]
 
 
-class PersonManager(models.Manager):
-    def create(self, **kwargs):
-        kwargs.update(
-            {
-                "cycle": Cycle.objects.get_active(),
-            }
-        )
-        return super().create(**kwargs)
-
-
-class Person(models.Model):
+class Person(CycleDependentAbstract):
     class Meta:
         verbose_name = _("person")
         verbose_name_plural = _("persons")
-
-    objects = PersonManager()
 
     ADULT = "adult"
     CHILD = "child"
@@ -40,14 +28,6 @@ class Person(models.Model):
         (OMNIVORE, _("omnivore")),
         (VEGETARIAN, _("vegetarian")),
         (VEGAN, _("vegan")),
-    )
-
-    cycle = models.ForeignKey(
-        Cycle,
-        on_delete=models.PROTECT,
-        related_name="persons",
-        verbose_name=_("cycle"),
-        editable=False,
     )
 
     user = models.ForeignKey(
@@ -80,10 +60,3 @@ class Person(models.Model):
     @property
     def full_name(self):
         return f"{self.first_name.strip()} {self.last_name.strip()}".strip()
-
-    def save(self, *args, **kwargs):
-        try:
-            _ = self.cycle
-        except Cycle.DoesNotExist:
-            self.cycle = Cycle.objects.get_active()
-        super().save(*args, **kwargs)
