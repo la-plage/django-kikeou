@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from kikeou.models.cycle import Cycle
