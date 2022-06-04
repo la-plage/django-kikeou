@@ -1,13 +1,13 @@
 from django.contrib import admin
 
-from ..models.person import Greeter, LocationContact, Person, Programmer, StageManager
+from ..models.persons import Greeter, LocationContact, Person, Programmer, StageManager
 
 __all__ = [
     "PersonAdmin",
     "GreeterAdmin",
-    "LocationContact",
-    "Programmer",
-    "StageManager",
+    "LocationContactAdmin",
+    "ProgrammerAdmin",
+    "StageManagerAdmin",
 ]
 
 

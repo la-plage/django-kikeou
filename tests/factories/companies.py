@@ -1,8 +1,8 @@
 import factory
 from factory.django import DjangoModelFactory
 
-from kikeou.models.company import Company
-from tests.factories.cycle import CycleFactory
+from kikeou.models.companies import Company
+from tests.factories.cycles import CycleFactory
 
 __all__ = ["CompanyFactory"]
 

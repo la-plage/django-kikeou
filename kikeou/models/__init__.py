@@ -1,3 +1,4 @@
-from .company import *
-from .cycle import *
-from .person import *
+from .companies import *
+from .cycles import *
+from .locations import *
+from .persons import *

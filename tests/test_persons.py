@@ -1,8 +1,8 @@
 from django.test import TestCase
 
-from kikeou.models.person import Greeter, LocationContact, Programmer, StageManager
-from tests.factories.cycle import CycleFactory
-from tests.factories.person import PersonFactory
+from kikeou.models.persons import Greeter, LocationContact, Programmer, StageManager
+from tests.factories.cycles import CycleFactory
+from tests.factories.persons import PersonFactory
 
 
 class PersonTestCase(TestCase):

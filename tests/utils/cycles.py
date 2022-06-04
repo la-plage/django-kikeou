@@ -2,7 +2,7 @@ from datetime import timedelta
 
 from django.utils.timezone import now
 
-from tests.factories.cycle import CycleFactory
+from tests.factories.cycles import CycleFactory
 
 
 def create_5_cycles_batch():

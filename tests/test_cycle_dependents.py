@@ -1,9 +1,9 @@
 from django.test import TestCase
 
-from kikeou.models.company import Company
-from kikeou.models.cycle import Cycle
+from kikeou.models.companies import Company
+from kikeou.models.cycles import Cycle
 from kikeou.models.utils.abstracts import get_default_cycle
-from tests.utils.cycle import create_5_cycles_batch
+from tests.utils.cycles import create_5_cycles_batch
 
 # FIXME: try to find a solution to have an independent model inheriting from abstract and script tests.
 #        In the meantime, we use here Company model that inherit from CycleDependentAbstract.

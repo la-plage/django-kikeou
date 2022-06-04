@@ -2,8 +2,8 @@ import factory
 from factory import Sequence
 from factory.django import DjangoModelFactory
 
-from kikeou.models.person import Person
-from tests.factories.cycle import CycleFactory
+from kikeou.models.persons import Person
+from tests.factories.cycles import CycleFactory
 
 __all__ = ["PersonFactory"]
 

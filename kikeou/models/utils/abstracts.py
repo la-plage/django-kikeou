@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from kikeou.models.cycle import Cycle
+from kikeou.models.cycles import Cycle
 
 __all__ = ["CycleDependentAbstract", "CycleDependentManager"]
 
