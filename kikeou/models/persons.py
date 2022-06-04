@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from kikeou.models.utils.abstracts import CycleDependentAbstract
+from kikeou.models.abstracts.cycle_dependents import CycleDependentAbstract
 
 __all__ = ["Person", "Greeter", "LocationContact", "Programmer", "StageManager"]
 

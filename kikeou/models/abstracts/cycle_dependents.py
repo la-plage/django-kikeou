@@ -6,16 +6,16 @@ from kikeou.models.cycles import Cycle
 __all__ = ["CycleDependentAbstract", "CycleDependentManager"]
 
 
-def get_default_cycle():
-    # That will raise a Cycle.DoesNotExist exception in case no cycle exists
-    return Cycle.objects.get_active()
-
-
 class CycleDependentManager(models.Manager):
     def create(self, **kwargs):
         if "cycle" not in kwargs.keys():
-            kwargs["cycle"] = get_default_cycle()
+            kwargs["cycle"] = self.get_default_cycle()
         return super().create(**kwargs)
+
+    @classmethod
+    def get_default_cycle(cls):
+        # That will raise a Cycle.DoesNotExist exception in case of no cycle exists
+        return Cycle.objects.get_active()
 
 
 class CycleDependentAbstract(models.Model):
@@ -30,5 +30,5 @@ class CycleDependentAbstract(models.Model):
         related_name="%(class)s_related",
         verbose_name=_("cycle"),
         editable=False,
-        default=get_default_cycle,
+        default=CycleDependentManager.get_default_cycle,
     )

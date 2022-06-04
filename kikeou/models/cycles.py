@@ -7,6 +7,8 @@ __all__ = ["Cycle"]
 
 class CycleManager(models.Manager):
     def get_active(self):
+        if not self.get_queryset().count():
+            return None
         return self.get_queryset().get(is_the_active_one=True)
 
 

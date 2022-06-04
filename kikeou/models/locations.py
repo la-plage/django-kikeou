@@ -1,8 +1,9 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from kikeou.models.abstracts.cycle_dependents import CycleDependentAbstract
+from kikeou.models.abstracts.location_dependents import LocationDependentAbstract
 from kikeou.models.persons import LocationContact
-from kikeou.models.utils.abstracts import CycleDependentAbstract
 
 __all__ = ["Accommodation", "Location", "Lodge", "Stage", "WarmUpPlace"]
 
@@ -29,29 +30,6 @@ class Location(CycleDependentAbstract):
 
     def __str__(self):
         return self.name
-
-
-class LocationDependentManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset().select_related("location")
-
-
-class LocationDependentAbstract(models.Model):
-    class Meta:
-        abstract = True
-
-    objects = LocationDependentManager()
-
-    location = models.OneToOneField(
-        Location,
-        on_delete=models.CASCADE,
-        verbose_name=_("location"),
-        related_name="%(class)s",
-        null=False,
-    )
-
-    def __str__(self):
-        return str(self.location)
 
 
 class Accommodation(LocationDependentAbstract):

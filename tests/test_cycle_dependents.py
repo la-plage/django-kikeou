@@ -1,8 +1,9 @@
+from django.db.utils import IntegrityError
 from django.test import TestCase
 
+from kikeou.models.abstracts.cycle_dependents import CycleDependentManager
 from kikeou.models.companies import Company
 from kikeou.models.cycles import Cycle
-from kikeou.models.utils.abstracts import get_default_cycle
 from tests.utils.cycles import create_5_cycles_batch
 
 # FIXME: try to find a solution to have an independent model inheriting from abstract and script tests.
@@ -12,8 +13,7 @@ from tests.utils.cycles import create_5_cycles_batch
 class CycleDependentTestCase(TestCase):
     def test_get_default_cycle_without_any_cycle_record(self):
         self.assertEqual(Cycle.objects.all().count(), 0)
-        with self.assertRaises(Cycle.DoesNotExist):
-            get_default_cycle()
+        self.assertIsNone(CycleDependentManager.get_default_cycle())
 
     def test_create_cycle_dependent_assigns_active_cycle_as_default(self):
         create_5_cycles_batch()
@@ -32,10 +32,10 @@ class CycleDependentTestCase(TestCase):
             first_cycle.id,
         )
 
-    def test_save_cycle_dependent_without_any_existing_cycle(self):
+    def test_instantiate_cycle_dependent_without_any_existing_cycle(self):
         self.assertEqual(Cycle.objects.all().count(), 0)
-        with self.assertRaises(Cycle.DoesNotExist):
-            Company()
+        with self.assertRaises(IntegrityError):
+            Company().save()
 
     def test_save_new_cycle_dependent_assigns_active_cycle_as_default(self):
         create_5_cycles_batch()
