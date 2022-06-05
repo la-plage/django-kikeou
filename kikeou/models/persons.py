@@ -12,10 +12,12 @@ class Person(CycleDependentAbstract):
         verbose_name = _("person")
         verbose_name_plural = _("persons")
 
+    UNDEFINED = "undefined"
     ADULT = "adult"
     CHILD = "child"
     TEENAGER = "teenager"
     AGE_TYPES = (
+        (UNDEFINED, _("undefined")),
         (ADULT, _("adult")),
         (CHILD, _("child")),
         (TEENAGER, _("teenager")),
@@ -47,6 +49,9 @@ class Person(CycleDependentAbstract):
     )
     phone = models.CharField(max_length=50, blank=True, verbose_name=_("phone"))
     email = models.EmailField(blank=True, verbose_name=_("email"))
+    age_type = models.CharField(
+        default=UNDEFINED, max_length=9, choices=AGE_TYPES, verbose_name=_("age type")
+    )
     diet_type = models.CharField(
         default=OMNIVORE, max_length=10, choices=DIET_TYPES, verbose_name=_("diet type")
     )
