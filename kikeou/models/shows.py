@@ -54,9 +54,9 @@ class Show(models.Model):
         blank=True, null=True, verbose_name=_("setup duration (minutes)")
     )
 
-    roadmap_remarks = models.TextField(blank=True, verbose_name=_("roadmap remarks"))
-    info_sheet_remarks = models.TextField(
-        blank=True, verbose_name=_("information sheet remarks")
+    roadmap_comments = models.TextField(blank=True, verbose_name=_("roadmap comments"))
+    info_sheet_comments = models.TextField(
+        blank=True, verbose_name=_("information sheet comments")
     )
 
     # GREETER RELATED FIELDS --------------------------------------------------
@@ -70,12 +70,12 @@ class Show(models.Model):
         related_name="shows",
         verbose_name=_("greeter"),
     )
-    greeter_remarks = models.TextField(blank=True, verbose_name=_("greeter remarks"))
-    food_remarks = models.TextField(blank=True, verbose_name=_("food remarks"))
+    greeter_comments = models.TextField(blank=True, verbose_name=_("greeter comments"))
+    food_comments = models.TextField(blank=True, verbose_name=_("food comments"))
     default_staff_arrival = models.DateTimeField(
         null=True, blank=True, verbose_name=_("staff arrival time (default)")
     )
-    arrival_remarks = models.TextField(blank=True, verbose_name=_("arrival remarks"))
+    arrival_comments = models.TextField(blank=True, verbose_name=_("arrival comments"))
     last_minute_arrival = models.BooleanField(
         null=False, default=False, verbose_name=_("last minute arrival")
     )
@@ -108,8 +108,8 @@ class Show(models.Model):
         related_name="shows",
         verbose_name=_("accommodation (default)"),
     )
-    accommodation_remarks = models.TextField(
-        blank=True, verbose_name=_("accommodation remarks")
+    accommodation_comments = models.TextField(
+        blank=True, verbose_name=_("accommodation comments")
     )
 
     # PROGRAMMER RELATED FIELDS -----------------------------------------------
@@ -123,8 +123,8 @@ class Show(models.Model):
         related_name="shows",
         verbose_name=_("programmer"),
     )
-    programmer_remarks = models.TextField(
-        blank=True, verbose_name=_("programmer remarks")
+    programmer_comments = models.TextField(
+        blank=True, verbose_name=_("programmer comments")
     )
 
     # STAGE MANAGER RELATED FIELDS --------------------------------------------
@@ -138,8 +138,8 @@ class Show(models.Model):
         related_name="shows_as_stage_manager",
         verbose_name=_("stage manager"),
     )
-    stage_manager_remarks = models.TextField(
-        blank=True, verbose_name=_("stage manager remarks")
+    stage_manager_comments = models.TextField(
+        blank=True, verbose_name=_("stage manager comments")
     )
 
     # LODGE RELATED FIELDS ----------------------------------------------------
@@ -168,7 +168,7 @@ class Show(models.Model):
         related_name="shows",
         verbose_name=_("lodge (default)"),
     )
-    lodge_remarks = models.TextField(blank=True, verbose_name=_("lodge remarks"))
+    lodge_comments = models.TextField(blank=True, verbose_name=_("lodge comments"))
 
     # WARM UP RELATED FIELDS --------------------------------------------------
 
@@ -178,8 +178,8 @@ class Show(models.Model):
     warm_up_duration = models.PositiveSmallIntegerField(
         null=True, blank=True, verbose_name=_("warm up duration (minutes)")
     )
-    warm_up_spaces_remarks = models.TextField(
-        blank=True, verbose_name=_("warm up spaces remarks")
+    warm_up_spaces_comments = models.TextField(
+        blank=True, verbose_name=_("warm up spaces comments")
     )
     default_warm_up_place = models.ForeignKey(
         WarmUpPlace,
