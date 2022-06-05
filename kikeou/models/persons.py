@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from kikeou.models.abstracts.cycle_dependents import CycleDependentAbstract
+from kikeou.models.abstracts.person_dependents import PersonDependentAbstract
 
 __all__ = ["Person", "Greeter", "LocationContact", "Programmer", "StageManager"]
 
@@ -59,15 +60,6 @@ class Person(CycleDependentAbstract):
         blank=True, verbose_name=_("allergies / intolerances")
     )
 
-    is_greeter = models.BooleanField(default=False, verbose_name=_("is greeter"))
-    is_location_contact = models.BooleanField(
-        default=False, verbose_name=_("is location contact")
-    )
-    is_programmer = models.BooleanField(default=False, verbose_name=_("is programmer"))
-    is_stage_manager = models.BooleanField(
-        default=False, verbose_name=_("is stage manager")
-    )
-
     def __str__(self):
         return self.full_name
 
@@ -76,73 +68,25 @@ class Person(CycleDependentAbstract):
         return f"{self.first_name.strip()} {self.last_name.strip()}".strip()
 
 
-class GreeterManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset().filter(is_greeter=True)
-
-
-class Greeter(Person):
+class Greeter(PersonDependentAbstract):
     class Meta:
-        proxy = True
         verbose_name = _("greeter person")
         verbose_name_plural = _("greeter persons")
 
-    objects = GreeterManager()
 
-    def save(self, *args, **kwargs):
-        self.is_greeter = True
-        super().save(*args, **kwargs)
-
-
-class LocationContactManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset().filter(is_location_contact=True)
-
-
-class LocationContact(Person):
+class LocationContact(PersonDependentAbstract):
     class Meta:
-        proxy = True
         verbose_name = _("location contact")
         verbose_name_plural = _("location contacts")
 
-    objects = LocationContactManager()
 
-    def save(self, *args, **kwargs):
-        self.is_location_contact = True
-        super().save(*args, **kwargs)
-
-
-class ProgrammerManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset().filter(is_programmer=True)
-
-
-class Programmer(Person):
+class Programmer(PersonDependentAbstract):
     class Meta:
-        proxy = True
         verbose_name = _("programmer person")
         verbose_name_plural = _("programmer persons")
 
-    objects = ProgrammerManager()
 
-    def save(self, *args, **kwargs):
-        self.is_programmer = True
-        super().save(*args, **kwargs)
-
-
-class StageManagerManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset().filter(is_stage_manager=True)
-
-
-class StageManager(Person):
+class StageManager(PersonDependentAbstract):
     class Meta:
-        proxy = True
         verbose_name = _("stage manager")
         verbose_name_plural = _("stage managers")
-
-    objects = StageManagerManager()
-
-    def save(self, *args, **kwargs):
-        self.is_stage_manager = True
-        super().save(*args, **kwargs)
