@@ -1,7 +1,11 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-__all__ = ["PersonDependentAbstract", "PersonDependentManager"]
+__all__ = [
+    "PersonDependentAbstract",
+    "PersonDependentManager",
+    "PersonDependentToManyAbstract",
+]
 
 
 class PersonDependentManager(models.Manager):
@@ -25,3 +29,20 @@ class PersonDependentAbstract(models.Model):
 
     def __str__(self):
         return str(self.person)
+
+
+class PersonDependentToManyAbstract(PersonDependentAbstract):
+    """
+    Same than PersonDependentAbstract but replace the person OneToOneField with ForeignKey
+    """
+
+    class Meta:
+        abstract = True
+
+    person = models.ForeignKey(
+        "Person",
+        on_delete=models.CASCADE,
+        verbose_name=_("person"),
+        related_name="%(class)s_set",
+        null=False,
+    )
