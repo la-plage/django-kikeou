@@ -16,6 +16,6 @@ class LocationDependentTestCase(TestCase):
 
     def test_location_dependent_queryset_catch_related_location(self):
         AccommodationFactory()
-        accommodation = Accommodation.objects.first()
+        location_dependent = Accommodation.objects.first()
         with self.assertNumQueries(0):
-            accommodation.location.name
+            location_dependent.location.name
