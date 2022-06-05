@@ -14,7 +14,7 @@ class CycleDependentManager(models.Manager):
 
     @classmethod
     def get_default_cycle(cls):
-        # That will raise a Cycle.DoesNotExist exception in case of no cycle exists
+        # That will return a None in case of no cycle exists
         return Cycle.objects.get_active()
 
 
