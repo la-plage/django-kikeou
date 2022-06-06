@@ -25,7 +25,7 @@ class Location(CycleDependentAbstract):
         null=True,
         blank=True,
         related_name="locations",
-        verbose_name=_("lodge contact"),
+        verbose_name=_("contact"),
     )
 
     def __str__(self):
