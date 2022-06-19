@@ -18,8 +18,8 @@ class ShowStaffFunction(models.Model):
 
 class ShowStaffMember(PersonDependentToManyAbstract):
     class Meta:
-        verbose_name = _("show staff member")
-        verbose_name_plural = _("show staff members")
+        verbose_name = _("staff member")
+        verbose_name_plural = _("staff members")
 
     show = models.ForeignKey(
         "Show",
