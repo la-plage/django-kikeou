@@ -1,0 +1,27 @@
+{% extends 'kikeou-base.html' %}
+{% load i18n %}
+
+{# workaround to have the same title & H1 #}
+{% block h1 %}
+  {% block title %}
+    {{ block.super }} - {% trans "Dashboard" %}
+  {% endblock %}
+{% endblock %}
+
+{% block content %}
+  {% if request.user.is_authenticated %}
+    <p>
+      {% blocktrans trimmed with user=request.user %}
+        You are logged in as {{ user }}
+      {% endblocktrans %}
+      <br /><a href="{% url "accounts:logout" %}">{% trans "Logout" %}</a>
+    </p>
+  {% else %}
+    <p>
+      {% blocktrans trimmed with user=request.user %}
+        You are not logged in
+      {% endblocktrans %}
+      <br /><a href="{% url "accounts:login" %}">{% trans "Login" %}</a>
+    </p>
+  {% endif %}
+{% endblock %}

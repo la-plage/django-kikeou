@@ -1,0 +1,8 @@
+{% extends 'kikeou-base.html' %}
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% block submit_form_label %}Submit{% endblock %}</button>
+  </form>
+{% endblock %}
