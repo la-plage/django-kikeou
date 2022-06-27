@@ -1,4 +1,6 @@
 db.sqlite3
+db.*.sqlite3
+
 .coverage
 *.pyc
 venv/
@@ -6,3 +8,4 @@ venv/
 build/
 dist/
 *.egg-info/
+.staticfiles

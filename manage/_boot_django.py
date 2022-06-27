@@ -11,14 +11,14 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, BASE_DIR)
 
 
-def boot_django():
+def boot_django(env="debug"):
     settings.configure(
         BASE_DIR=BASE_DIR,
         DEBUG=True,
         DATABASES={
             "default": {
                 "ENGINE": "django.db.backends.sqlite3",
-                "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+                "NAME": os.path.join(BASE_DIR, f"db.{env}.sqlite3"),
             }
         },
         INSTALLED_APPS=[
@@ -27,6 +27,7 @@ def boot_django():
             "django.contrib.contenttypes",
             "django.contrib.sessions",
             "django.contrib.messages",
+            "django.contrib.staticfiles",
             "kikeou",
         ],
         MIDDLEWARE=[
@@ -35,7 +36,11 @@ def boot_django():
             "django.contrib.messages.middleware.MessageMiddleware",
             "django.contrib.sessions.middleware.SessionMiddleware",
         ],
-        ROOT_URLCONF="tests._urls",
+        ROOT_URLCONF=f"manage._urls_{env}",
+        LOGIN_REDIRECT_URL="/",
+        LOGOUT_REDIRECT_URL="/",
+        STATIC_URL="/static/",
+        STATIC_ROOT=os.path.join(BASE_DIR, '.staticfiles'),
         SECRET_KEY="not_secret",
         TEMPLATES=[
             {
@@ -54,5 +59,7 @@ def boot_django():
         ],
         TIME_ZONE="UTC",
         USE_TZ=True,
+        USE_I18N=True,
+        LANGUAGE_CODE="en-us",
     )
     django.setup()

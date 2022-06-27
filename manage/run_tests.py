@@ -5,7 +5,7 @@ from unittest import TestSuite
 
 from _boot_django import boot_django
 
-boot_django()
+boot_django("tests")
 default_labels = [
     "tests",
 ]
