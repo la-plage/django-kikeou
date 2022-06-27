@@ -13,3 +13,12 @@ isort-check:
 .PHONY: isort-fix
 isort-fix:
 	isort --skip venv .
+
+.PHONY: runserver
+runserver8888:
+	./manage.py runserver 0.0.0.0:8888
+
+.PHONY: tests
+tests:
+	coverage run ./manage.py test tests
+	coverage report
