@@ -16,293 +16,882 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Accommodation',
+            name="Accommodation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'accommodation',
-                'verbose_name_plural': 'accommodations',
+                "verbose_name": "accommodation",
+                "verbose_name_plural": "accommodations",
             },
         ),
         migrations.CreateModel(
-            name='Company',
+            name="Company",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='name')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, verbose_name="name")),
             ],
             options={
-                'verbose_name': 'company',
-                'verbose_name_plural': 'companies',
+                "verbose_name": "company",
+                "verbose_name_plural": "companies",
             },
         ),
         migrations.CreateModel(
-            name='Cycle',
+            name="Cycle",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('is_the_active_one', models.BooleanField(default=False, verbose_name='is the active one')),
-                ('name', models.CharField(max_length=100, verbose_name='name')),
-                ('start_date', models.DateField(verbose_name='start date')),
-                ('end_date', models.DateField(verbose_name='end date')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "is_the_active_one",
+                    models.BooleanField(
+                        default=False, verbose_name="is the active one"
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, verbose_name="name")),
+                ("start_date", models.DateField(verbose_name="start date")),
+                ("end_date", models.DateField(verbose_name="end date")),
             ],
             options={
-                'verbose_name': 'cycle',
-                'verbose_name_plural': 'cycles',
+                "verbose_name": "cycle",
+                "verbose_name_plural": "cycles",
             },
         ),
         migrations.CreateModel(
-            name='Greeter',
+            name="Greeter",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'greeter person',
-                'verbose_name_plural': 'greeter persons',
+                "verbose_name": "greeter person",
+                "verbose_name_plural": "greeter persons",
             },
         ),
         migrations.CreateModel(
-            name='Location',
+            name="Location",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, verbose_name='name')),
-                ('street', models.CharField(blank=True, max_length=100, verbose_name='street & n°')),
-                ('zip_code', models.CharField(blank=True, max_length=10, verbose_name='zip code')),
-                ('city', models.CharField(blank=True, max_length=50, verbose_name='city')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50, verbose_name="name")),
+                (
+                    "street",
+                    models.CharField(
+                        blank=True, max_length=100, verbose_name="street & n°"
+                    ),
+                ),
+                (
+                    "zip_code",
+                    models.CharField(
+                        blank=True, max_length=10, verbose_name="zip code"
+                    ),
+                ),
+                (
+                    "city",
+                    models.CharField(blank=True, max_length=50, verbose_name="city"),
+                ),
             ],
             options={
-                'verbose_name': 'location',
-                'verbose_name_plural': 'locations',
+                "verbose_name": "location",
+                "verbose_name_plural": "locations",
             },
         ),
         migrations.CreateModel(
-            name='Lodge',
+            name="Lodge",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('gauge', models.PositiveSmallIntegerField(default=0, verbose_name='gauge')),
-                ('ground_floor', models.BooleanField(default=False, verbose_name='ground floor')),
-                ('soundproofed', models.BooleanField(default=False, verbose_name='soundproofed')),
-                ('location', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='lodge', to='kikeou.location', verbose_name='location')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "gauge",
+                    models.PositiveSmallIntegerField(default=0, verbose_name="gauge"),
+                ),
+                (
+                    "ground_floor",
+                    models.BooleanField(default=False, verbose_name="ground floor"),
+                ),
+                (
+                    "soundproofed",
+                    models.BooleanField(default=False, verbose_name="soundproofed"),
+                ),
+                (
+                    "location",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="lodge",
+                        to="kikeou.location",
+                        verbose_name="location",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'lodge',
-                'verbose_name_plural': 'lodges',
+                "verbose_name": "lodge",
+                "verbose_name_plural": "lodges",
             },
         ),
         migrations.CreateModel(
-            name='Person',
+            name="Person",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=100, verbose_name='first name')),
-                ('last_name', models.CharField(blank=True, max_length=100, verbose_name='last name')),
-                ('phone', models.CharField(blank=True, max_length=50, verbose_name='phone')),
-                ('email', models.EmailField(blank=True, max_length=254, verbose_name='email')),
-                ('age_type', models.CharField(choices=[('undefined', 'undefined'), ('adult', 'adult'), ('child', 'child'), ('teenager', 'teenager')], default='undefined', max_length=9, verbose_name='age type')),
-                ('diet_type', models.CharField(choices=[('omnivore', 'omnivore'), ('vegetarian', 'vegetarian'), ('vegan', 'vegan')], default='omnivore', max_length=10, verbose_name='diet type')),
-                ('diet_allergies', models.TextField(blank=True, verbose_name='allergies / intolerances')),
-                ('cycle', models.ForeignKey(default=kikeou.models.abstracts.cycle_dependents.CycleDependentManager.get_default_cycle, editable=False, on_delete=django.db.models.deletion.PROTECT, related_name='person_related', to='kikeou.cycle', verbose_name='cycle')),
-                ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='persons', to=settings.AUTH_USER_MODEL, verbose_name='user')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "first_name",
+                    models.CharField(max_length=100, verbose_name="first name"),
+                ),
+                (
+                    "last_name",
+                    models.CharField(
+                        blank=True, max_length=100, verbose_name="last name"
+                    ),
+                ),
+                (
+                    "phone",
+                    models.CharField(blank=True, max_length=50, verbose_name="phone"),
+                ),
+                (
+                    "email",
+                    models.EmailField(blank=True, max_length=254, verbose_name="email"),
+                ),
+                (
+                    "age_type",
+                    models.CharField(
+                        choices=[
+                            ("undefined", "undefined"),
+                            ("adult", "adult"),
+                            ("child", "child"),
+                            ("teenager", "teenager"),
+                        ],
+                        default="undefined",
+                        max_length=9,
+                        verbose_name="age type",
+                    ),
+                ),
+                (
+                    "diet_type",
+                    models.CharField(
+                        choices=[
+                            ("omnivore", "omnivore"),
+                            ("vegetarian", "vegetarian"),
+                            ("vegan", "vegan"),
+                        ],
+                        default="omnivore",
+                        max_length=10,
+                        verbose_name="diet type",
+                    ),
+                ),
+                (
+                    "diet_allergies",
+                    models.TextField(
+                        blank=True, verbose_name="allergies / intolerances"
+                    ),
+                ),
+                (
+                    "cycle",
+                    models.ForeignKey(
+                        default=kikeou.models.abstracts.cycle_dependents.CycleDependentManager.get_default_cycle,
+                        editable=False,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="person_related",
+                        to="kikeou.cycle",
+                        verbose_name="cycle",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="persons",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="user",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'person',
-                'verbose_name_plural': 'persons',
+                "verbose_name": "person",
+                "verbose_name_plural": "persons",
             },
         ),
         migrations.CreateModel(
-            name='Programmer',
+            name="Programmer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('person', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='programmer', to='kikeou.person', verbose_name='person')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "person",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="programmer",
+                        to="kikeou.person",
+                        verbose_name="person",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'programmer person',
-                'verbose_name_plural': 'programmer persons',
+                "verbose_name": "programmer person",
+                "verbose_name_plural": "programmer persons",
             },
         ),
         migrations.CreateModel(
-            name='Show',
+            name="Show",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('code', models.CharField(blank=True, max_length=15, verbose_name='code')),
-                ('name', models.CharField(max_length=100, verbose_name='name')),
-                ('size', models.CharField(blank=True, max_length=20, verbose_name='size')),
-                ('accessories', models.TextField(blank=True, verbose_name='accessories')),
-                ('storage', models.TextField(blank=True, verbose_name='storage')),
-                ('show_duration', models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='show duration (minutes)')),
-                ('setup_duration', models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='setup duration (minutes)')),
-                ('roadmap_comments', models.TextField(blank=True, verbose_name='roadmap comments')),
-                ('info_sheet_comments', models.TextField(blank=True, verbose_name='information sheet comments')),
-                ('greeter_comments', models.TextField(blank=True, verbose_name='greeter comments')),
-                ('food_comments', models.TextField(blank=True, verbose_name='food comments')),
-                ('default_staff_arrival', models.DateTimeField(blank=True, null=True, verbose_name='staff arrival time (default)')),
-                ('arrival_comments', models.TextField(blank=True, verbose_name='arrival comments')),
-                ('last_minute_arrival', models.BooleanField(default=False, verbose_name='last minute arrival')),
-                ('default_staff_departure', models.DateTimeField(blank=True, null=True, verbose_name='staff departure (default)')),
-                ('mean_of_travel', models.CharField(blank=True, choices=[('motorized', 'motorized vehicle'), ('walker', 'walker')], default='', max_length=9, verbose_name='mean of travel')),
-                ('vehicles', models.TextField(blank=True, verbose_name='vehicles')),
-                ('accommodation_comments', models.TextField(blank=True, verbose_name='accommodation comments')),
-                ('programmer_comments', models.TextField(blank=True, verbose_name='programmer comments')),
-                ('stage_manager_comments', models.TextField(blank=True, verbose_name='stage manager comments')),
-                ('need_lodge', models.BooleanField(default=None, null=True, verbose_name='need lodge')),
-                ('lodge_people', models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='people in lodge')),
-                ('lodge_duration_before', models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='time in lodge before the show (minutes)')),
-                ('lodge_duration_after', models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='time in lodge after the show (minutes)')),
-                ('need_lodge_catering', models.BooleanField(default=None, null=True, verbose_name='catering in lodge')),
-                ('lodge_comments', models.TextField(blank=True, verbose_name='lodge comments')),
-                ('need_warm_up', models.BooleanField(default=None, null=True, verbose_name='need warm up')),
-                ('warm_up_duration', models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='warm up duration (minutes)')),
-                ('warm_up_spaces_comments', models.TextField(blank=True, verbose_name='warm up spaces comments')),
-                ('company', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='shows', to='kikeou.company', verbose_name='company')),
-                ('default_accommodation', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='shows', to='kikeou.accommodation', verbose_name='accommodation (default)')),
-                ('default_lodge', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='shows', to='kikeou.lodge', verbose_name='lodge (default)')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "code",
+                    models.CharField(blank=True, max_length=15, verbose_name="code"),
+                ),
+                ("name", models.CharField(max_length=100, verbose_name="name")),
+                (
+                    "size",
+                    models.CharField(blank=True, max_length=20, verbose_name="size"),
+                ),
+                (
+                    "accessories",
+                    models.TextField(blank=True, verbose_name="accessories"),
+                ),
+                ("storage", models.TextField(blank=True, verbose_name="storage")),
+                (
+                    "show_duration",
+                    models.PositiveSmallIntegerField(
+                        blank=True, null=True, verbose_name="show duration (minutes)"
+                    ),
+                ),
+                (
+                    "setup_duration",
+                    models.PositiveSmallIntegerField(
+                        blank=True, null=True, verbose_name="setup duration (minutes)"
+                    ),
+                ),
+                (
+                    "roadmap_comments",
+                    models.TextField(blank=True, verbose_name="roadmap comments"),
+                ),
+                (
+                    "info_sheet_comments",
+                    models.TextField(
+                        blank=True, verbose_name="information sheet comments"
+                    ),
+                ),
+                (
+                    "greeter_comments",
+                    models.TextField(blank=True, verbose_name="greeter comments"),
+                ),
+                (
+                    "food_comments",
+                    models.TextField(blank=True, verbose_name="food comments"),
+                ),
+                (
+                    "default_staff_arrival",
+                    models.DateTimeField(
+                        blank=True,
+                        null=True,
+                        verbose_name="staff arrival time (default)",
+                    ),
+                ),
+                (
+                    "arrival_comments",
+                    models.TextField(blank=True, verbose_name="arrival comments"),
+                ),
+                (
+                    "last_minute_arrival",
+                    models.BooleanField(
+                        default=False, verbose_name="last minute arrival"
+                    ),
+                ),
+                (
+                    "default_staff_departure",
+                    models.DateTimeField(
+                        blank=True, null=True, verbose_name="staff departure (default)"
+                    ),
+                ),
+                (
+                    "mean_of_travel",
+                    models.CharField(
+                        blank=True,
+                        choices=[
+                            ("motorized", "motorized vehicle"),
+                            ("walker", "walker"),
+                        ],
+                        default="",
+                        max_length=9,
+                        verbose_name="mean of travel",
+                    ),
+                ),
+                ("vehicles", models.TextField(blank=True, verbose_name="vehicles")),
+                (
+                    "accommodation_comments",
+                    models.TextField(blank=True, verbose_name="accommodation comments"),
+                ),
+                (
+                    "programmer_comments",
+                    models.TextField(blank=True, verbose_name="programmer comments"),
+                ),
+                (
+                    "stage_manager_comments",
+                    models.TextField(blank=True, verbose_name="stage manager comments"),
+                ),
+                (
+                    "need_lodge",
+                    models.BooleanField(
+                        default=None, null=True, verbose_name="need lodge"
+                    ),
+                ),
+                (
+                    "lodge_people",
+                    models.PositiveSmallIntegerField(
+                        blank=True, null=True, verbose_name="people in lodge"
+                    ),
+                ),
+                (
+                    "lodge_duration_before",
+                    models.PositiveSmallIntegerField(
+                        blank=True,
+                        null=True,
+                        verbose_name="time in lodge before the show (minutes)",
+                    ),
+                ),
+                (
+                    "lodge_duration_after",
+                    models.PositiveSmallIntegerField(
+                        blank=True,
+                        null=True,
+                        verbose_name="time in lodge after the show (minutes)",
+                    ),
+                ),
+                (
+                    "need_lodge_catering",
+                    models.BooleanField(
+                        default=None, null=True, verbose_name="catering in lodge"
+                    ),
+                ),
+                (
+                    "lodge_comments",
+                    models.TextField(blank=True, verbose_name="lodge comments"),
+                ),
+                (
+                    "need_warm_up",
+                    models.BooleanField(
+                        default=None, null=True, verbose_name="need warm up"
+                    ),
+                ),
+                (
+                    "warm_up_duration",
+                    models.PositiveSmallIntegerField(
+                        blank=True, null=True, verbose_name="warm up duration (minutes)"
+                    ),
+                ),
+                (
+                    "warm_up_spaces_comments",
+                    models.TextField(
+                        blank=True, verbose_name="warm up spaces comments"
+                    ),
+                ),
+                (
+                    "company",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="shows",
+                        to="kikeou.company",
+                        verbose_name="company",
+                    ),
+                ),
+                (
+                    "default_accommodation",
+                    models.ForeignKey(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="shows",
+                        to="kikeou.accommodation",
+                        verbose_name="accommodation (default)",
+                    ),
+                ),
+                (
+                    "default_lodge",
+                    models.ForeignKey(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="shows",
+                        to="kikeou.lodge",
+                        verbose_name="lodge (default)",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'show',
-                'verbose_name_plural': 'shows',
+                "verbose_name": "show",
+                "verbose_name_plural": "shows",
             },
         ),
         migrations.CreateModel(
-            name='ShowStaffFunction',
+            name="ShowStaffFunction",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50)),
             ],
             options={
-                'verbose_name': 'staff function',
-                'verbose_name_plural': 'staff functions',
+                "verbose_name": "staff function",
+                "verbose_name_plural": "staff functions",
             },
         ),
         migrations.CreateModel(
-            name='WarmUpPlace',
+            name="WarmUpPlace",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('location', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='warmupplace', to='kikeou.location', verbose_name='location')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "location",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="warmupplace",
+                        to="kikeou.location",
+                        verbose_name="location",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'warm-up place',
-                'verbose_name_plural': 'warm-up places',
+                "verbose_name": "warm-up place",
+                "verbose_name_plural": "warm-up places",
             },
         ),
         migrations.CreateModel(
-            name='StageManager',
+            name="StageManager",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('person', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='stagemanager', to='kikeou.person', verbose_name='person')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "person",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="stagemanager",
+                        to="kikeou.person",
+                        verbose_name="person",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'stage manager',
-                'verbose_name_plural': 'stage managers',
+                "verbose_name": "stage manager",
+                "verbose_name_plural": "stage managers",
             },
         ),
         migrations.CreateModel(
-            name='Stage',
+            name="Stage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('default_lodge', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='default_stage_assignations', to='kikeou.lodge', verbose_name='default lodge')),
-                ('default_warming_up_place', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='default_stage_assignations', to='kikeou.warmupplace', verbose_name='default warm up place')),
-                ('location', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='stage', to='kikeou.location', verbose_name='location')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "default_lodge",
+                    models.ForeignKey(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="default_stage_assignations",
+                        to="kikeou.lodge",
+                        verbose_name="default lodge",
+                    ),
+                ),
+                (
+                    "default_warming_up_place",
+                    models.ForeignKey(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="default_stage_assignations",
+                        to="kikeou.warmupplace",
+                        verbose_name="default warm up place",
+                    ),
+                ),
+                (
+                    "location",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="stage",
+                        to="kikeou.location",
+                        verbose_name="location",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'stage',
-                'verbose_name_plural': 'stages',
+                "verbose_name": "stage",
+                "verbose_name_plural": "stages",
             },
         ),
         migrations.CreateModel(
-            name='ShowType',
+            name="ShowType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20, verbose_name='name')),
-                ('cycle', models.ForeignKey(default=kikeou.models.abstracts.cycle_dependents.CycleDependentManager.get_default_cycle, editable=False, on_delete=django.db.models.deletion.PROTECT, related_name='showtype_related', to='kikeou.cycle', verbose_name='cycle')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20, verbose_name="name")),
+                (
+                    "cycle",
+                    models.ForeignKey(
+                        default=kikeou.models.abstracts.cycle_dependents.CycleDependentManager.get_default_cycle,
+                        editable=False,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="showtype_related",
+                        to="kikeou.cycle",
+                        verbose_name="cycle",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'show type',
-                'verbose_name_plural': 'show types',
+                "verbose_name": "show type",
+                "verbose_name_plural": "show types",
             },
         ),
         migrations.CreateModel(
-            name='ShowStaffMember',
+            name="ShowStaffMember",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('comments', models.TextField(blank=True, verbose_name='comments')),
-                ('is_present', models.BooleanField(default=True, verbose_name='is present')),
-                ('is_contact_person', models.BooleanField(default=False, verbose_name='contact person')),
-                ('approximate_time_of_arrival', models.BooleanField(default=False, verbose_name='approximate time of arrival')),
-                ('arrival', models.DateTimeField(blank=True, null=True, verbose_name='arrival')),
-                ('departure', models.DateTimeField(blank=True, null=True, verbose_name='departure')),
-                ('need_accommodations', models.BooleanField(default=None, null=True, verbose_name='need accommodations')),
-                ('accommodation_comments', models.TextField(blank=True, verbose_name='accommodation comments')),
-                ('accommodation_place', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='persons', to='kikeou.accommodation', verbose_name='accommodation place')),
-                ('person', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='showstaffmember_set', to='kikeou.person', verbose_name='person')),
-                ('show', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='staff_persons', to='kikeou.show', verbose_name='show')),
-                ('staff_function', models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='staff_members', to='kikeou.showstafffunction', verbose_name='staff function')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("comments", models.TextField(blank=True, verbose_name="comments")),
+                (
+                    "is_present",
+                    models.BooleanField(default=True, verbose_name="is present"),
+                ),
+                (
+                    "is_contact_person",
+                    models.BooleanField(default=False, verbose_name="contact person"),
+                ),
+                (
+                    "approximate_time_of_arrival",
+                    models.BooleanField(
+                        default=False, verbose_name="approximate time of arrival"
+                    ),
+                ),
+                (
+                    "arrival",
+                    models.DateTimeField(blank=True, null=True, verbose_name="arrival"),
+                ),
+                (
+                    "departure",
+                    models.DateTimeField(
+                        blank=True, null=True, verbose_name="departure"
+                    ),
+                ),
+                (
+                    "need_accommodations",
+                    models.BooleanField(
+                        default=None, null=True, verbose_name="need accommodations"
+                    ),
+                ),
+                (
+                    "accommodation_comments",
+                    models.TextField(blank=True, verbose_name="accommodation comments"),
+                ),
+                (
+                    "accommodation_place",
+                    models.ForeignKey(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="persons",
+                        to="kikeou.accommodation",
+                        verbose_name="accommodation place",
+                    ),
+                ),
+                (
+                    "person",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="showstaffmember_set",
+                        to="kikeou.person",
+                        verbose_name="person",
+                    ),
+                ),
+                (
+                    "show",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="staff_persons",
+                        to="kikeou.show",
+                        verbose_name="show",
+                    ),
+                ),
+                (
+                    "staff_function",
+                    models.ForeignKey(
+                        blank=True,
+                        default=None,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="staff_members",
+                        to="kikeou.showstafffunction",
+                        verbose_name="staff function",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'staff member',
-                'verbose_name_plural': 'staff members',
+                "verbose_name": "staff member",
+                "verbose_name_plural": "staff members",
             },
         ),
         migrations.AddField(
-            model_name='show',
-            name='default_warm_up_place',
-            field=models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='warm_up_shows', to='kikeou.warmupplace', verbose_name='warm up place (default)'),
+            model_name="show",
+            name="default_warm_up_place",
+            field=models.ForeignKey(
+                blank=True,
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="warm_up_shows",
+                to="kikeou.warmupplace",
+                verbose_name="warm up place (default)",
+            ),
         ),
         migrations.AddField(
-            model_name='show',
-            name='greeter',
-            field=models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='shows', to='kikeou.greeter', verbose_name='greeter'),
+            model_name="show",
+            name="greeter",
+            field=models.ForeignKey(
+                blank=True,
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="shows",
+                to="kikeou.greeter",
+                verbose_name="greeter",
+            ),
         ),
         migrations.AddField(
-            model_name='show',
-            name='programmer',
-            field=models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='shows', to='kikeou.programmer', verbose_name='programmer'),
+            model_name="show",
+            name="programmer",
+            field=models.ForeignKey(
+                blank=True,
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="shows",
+                to="kikeou.programmer",
+                verbose_name="programmer",
+            ),
         ),
         migrations.AddField(
-            model_name='show',
-            name='stage_manager',
-            field=models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='shows_as_stage_manager', to='kikeou.stagemanager', verbose_name='stage manager'),
+            model_name="show",
+            name="stage_manager",
+            field=models.ForeignKey(
+                blank=True,
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="shows_as_stage_manager",
+                to="kikeou.stagemanager",
+                verbose_name="stage manager",
+            ),
         ),
         migrations.AddField(
-            model_name='show',
-            name='type',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='kikeou.showtype', verbose_name='show type'),
+            model_name="show",
+            name="type",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="kikeou.showtype",
+                verbose_name="show type",
+            ),
         ),
         migrations.CreateModel(
-            name='LocationContact',
+            name="LocationContact",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('person', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='locationcontact', to='kikeou.person', verbose_name='person')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "person",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="locationcontact",
+                        to="kikeou.person",
+                        verbose_name="person",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'location contact',
-                'verbose_name_plural': 'location contacts',
+                "verbose_name": "location contact",
+                "verbose_name_plural": "location contacts",
             },
         ),
         migrations.AddField(
-            model_name='location',
-            name='contact',
-            field=models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='locations', to='kikeou.locationcontact', verbose_name='contact'),
+            model_name="location",
+            name="contact",
+            field=models.ForeignKey(
+                blank=True,
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="locations",
+                to="kikeou.locationcontact",
+                verbose_name="contact",
+            ),
         ),
         migrations.AddField(
-            model_name='location',
-            name='cycle',
-            field=models.ForeignKey(default=kikeou.models.abstracts.cycle_dependents.CycleDependentManager.get_default_cycle, editable=False, on_delete=django.db.models.deletion.PROTECT, related_name='location_related', to='kikeou.cycle', verbose_name='cycle'),
+            model_name="location",
+            name="cycle",
+            field=models.ForeignKey(
+                default=kikeou.models.abstracts.cycle_dependents.CycleDependentManager.get_default_cycle,
+                editable=False,
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="location_related",
+                to="kikeou.cycle",
+                verbose_name="cycle",
+            ),
         ),
         migrations.AddField(
-            model_name='greeter',
-            name='person',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='greeter', to='kikeou.person', verbose_name='person'),
+            model_name="greeter",
+            name="person",
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="greeter",
+                to="kikeou.person",
+                verbose_name="person",
+            ),
         ),
         migrations.AddConstraint(
-            model_name='cycle',
-            constraint=models.UniqueConstraint(condition=models.Q(('is_the_active_one', True)), fields=('is_the_active_one',), name='unique_is_the_active_one'),
+            model_name="cycle",
+            constraint=models.UniqueConstraint(
+                condition=models.Q(("is_the_active_one", True)),
+                fields=("is_the_active_one",),
+                name="unique_is_the_active_one",
+            ),
         ),
         migrations.AddField(
-            model_name='company',
-            name='cycle',
-            field=models.ForeignKey(default=kikeou.models.abstracts.cycle_dependents.CycleDependentManager.get_default_cycle, editable=False, on_delete=django.db.models.deletion.PROTECT, related_name='company_related', to='kikeou.cycle', verbose_name='cycle'),
+            model_name="company",
+            name="cycle",
+            field=models.ForeignKey(
+                default=kikeou.models.abstracts.cycle_dependents.CycleDependentManager.get_default_cycle,
+                editable=False,
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="company_related",
+                to="kikeou.cycle",
+                verbose_name="cycle",
+            ),
         ),
         migrations.AddField(
-            model_name='accommodation',
-            name='location',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='accommodation', to='kikeou.location', verbose_name='location'),
+            model_name="accommodation",
+            name="location",
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="accommodation",
+                to="kikeou.location",
+                verbose_name="location",
+            ),
         ),
     ]
